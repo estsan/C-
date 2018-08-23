@@ -1,1 +1,1 @@
-!x || !y
+bool result = !x || !y;
