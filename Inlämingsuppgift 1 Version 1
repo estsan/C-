@@ -1,0 +1,45 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace ConsoleApp1
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            System.Globalization.CultureInfo.CurrentCulture = System.Globalization.CultureInfo.InvariantCulture;
+
+            Console.WriteLine("Hit me up fam, jag kan nog avslöja ditt språk!");
+            string text = Console.ReadLine();
+
+            int n = text.Length;
+            int i;
+            int aacount = 0;
+            int aecount = 0;
+            int oecount = 0;
+
+            for (i = 0; i < n; i++)
+                if (text[i] == char.Parse("å") || text[i] == char.Parse("Å"))
+                    aacount++;
+
+            for (i = 0; i < n; i++)
+                if (text[i] == char.Parse("ä") || text[i] == char.Parse("Ä"))
+                    aecount++;
+
+            for (i = 0; i < n; i++)
+                if (text[i] == char.Parse("ö") || text[i] == char.Parse("Ö"))
+                    oecount++;
+
+            Console.WriteLine("antal å: " + aacount + ", antal ä: " + aecount + ", och antal ö: " + oecount);
+            System.Threading.Thread.Sleep(5000);
+            Console.WriteLine("SURPRISE");
+
+
+            Console.ReadLine();
+
+        }
+    }
+}
