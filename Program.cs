@@ -16,9 +16,11 @@ namespace ConsoleApp1
             // Läs in en mening från användaren
             Console.WriteLine("Hit me up fam, I will disclose the Swedishness of your sentence!");
             string text = Console.ReadLine();
+
+            string lowerText = text.ToLower();
                 
             // Kolla hur lång meningen är
-            int n = text.Length;
+            int n = lowerText.Length;
             // Ansätt några variabler
             int i;
             int aacount = 0;
@@ -27,17 +29,17 @@ namespace ConsoleApp1
 
             // Hur många å:n finns i meningen?
             for (i = 0; i < n; i++)
-                if (text[i] == char.Parse("å") || text[i] == char.Parse("Å"))
+                if (lowerText[i] == char.Parse("å")) // || text[i] == char.Parse("Å"))
                     aacount++;
 
             //Hur många ä:n finns i meningen?
             for (i = 0; i < n; i++)
-                if (text[i] == char.Parse("ä") || text[i] == char.Parse("Ä"))
+                if (lowerText[i] == char.Parse("ä")) // || text[i] == char.Parse("Ä"))
                     aecount++;
 
             // Hur många ö:n finns det i meningen?
             for (i = 0; i < n; i++)
-                if (text[i] == char.Parse("ö") || text[i] == char.Parse("Ö"))
+                if (lowerText[i] == char.Parse("ö")) // || text[i] == char.Parse("Ö"))
                     oecount++;
 
             // Är antalet å, ä och ö noll?
@@ -57,7 +59,20 @@ namespace ConsoleApp1
 
             // En lite överraskning för att testa Sleep.
             System.Threading.Thread.Sleep(5000);
-            Console.WriteLine("SURPRISE");
+            Console.Write(".");
+            System.Threading.Thread.Sleep(500);
+            Console.Write("o");
+            System.Threading.Thread.Sleep(500);
+            Console.Write("0");
+            System.Threading.Thread.Sleep(500);
+            Console.Write("O");
+            System.Threading.Thread.Sleep(500);
+            Console.Write("0");
+            System.Threading.Thread.Sleep(500);
+            Console.Write("o");
+            System.Threading.Thread.Sleep(500);
+            Console.Write(".");
+            Console.ReadKey();
 
 
             Console.ReadLine();
