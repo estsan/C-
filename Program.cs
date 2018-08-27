@@ -1,17 +1,3 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace ConsoleApp1
-{
-    class Program
-    {
-        static void Main(string[] args)
-        {
-            System.Globalization.CultureInfo.CurrentCulture = System.Globalization.CultureInfo.InvariantCulture;
-
 
             // Läs in en mening från användaren
             Console.WriteLine("Hit me up fam, I will disclose the Swedishness of your sentence!");
@@ -74,9 +60,3 @@ namespace ConsoleApp1
             Console.Write(".");
             Console.ReadKey();
 
-
-            Console.ReadLine();
-
-        }
-    }
-}
