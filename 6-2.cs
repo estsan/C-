@@ -19,9 +19,9 @@ namespace ConsoleApp1
 
             Console.Write("Baklänges: ");
 
-            for (int i = 1; i <= n; i++)
+            for (int i = 0; i < n; i++)
             {
-                Console.Write(forward[n - i]);
+                Console.Write(forward[n - i-1]);
             }
 
             Console.ReadKey();
