@@ -14,7 +14,7 @@ namespace ConsoleApp1
 
             string text = Console.ReadLine();
             text = text.ToLower();
-            string[] split = text.Split(new Char[] { ' ', ',', '.', ':', '\t' });
+            string[] split = text.Split(new Char[] { ' ', ',', '.', ':', '\t'});
             int n = split.Length;
             Dictionary<string, int> antal = new Dictionary<string, int> { };
             int counter = 0;
@@ -47,9 +47,19 @@ namespace ConsoleApp1
                 sista.Add(pair.Key, numret[counter]);
                 counter++;
             }
-            //int m = numret.Max();
-            //int p = Array.IndexOf(numret, m);
-            Console.WriteLine("Hur kommer jag ens åt nån av all data jag har? \""  );
+            int m = numret.Max();
+            string outputt = "";
+
+            foreach (KeyValuePair<string, int> pair in sista)
+            {
+                if (pair.Value == m)
+                {
+                    outputt = "Det vanligaste ordet är " + pair.Key + ", vilket förekommer " + pair.Value + " gånger.";
+                    //Console.WriteLine("Det vanligaste ordet är \"" + pair.Key + "\", vilket förekommer " + pair.Value + " gånger.");
+                }
+            }
+
+            Console.WriteLine(outputt);
             Console.ReadKey();
         }
     }
