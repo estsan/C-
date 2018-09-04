@@ -15,11 +15,13 @@ namespace ConsoleApp1
             Console.WriteLine("Classify:");
             string hemligText = Console.ReadLine();
             int n = hemligText.Length;
+            string hemligareText = "";
             string hemligastText = "";
+
 
             if (hemligText.StartsWith("Classified:"))
             {
-                string hemligareText = hemligText.Replace("Area 51", "[AN UNDISCLOSED LOCATION]");
+                hemligareText = hemligText.Replace("Area 51", "[AN UNDISCLOSED LOCATION]");
                 hemligastText = hemligareText.Remove(0, 12);
             }
             else
