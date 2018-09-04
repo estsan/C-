@@ -13,41 +13,32 @@ namespace ConsoleApp1
             System.Globalization.CultureInfo.CurrentCulture = System.Globalization.CultureInfo.InvariantCulture;
 
             Console.Write("Text plax: ");
-            string text = Console.ReadLine();
-            Console.WriteLine("Alfabet?");
-            // string alfabet = Console.ReadLine();
-            string lowText = text.ToLower();
-            //
-            int n = lowText.Length;
-            string shortText = "";
-            int counter = 0; //ELLER?
-            string backward = "";
+            string pangram = Console.ReadLine();
+            pangram = pangram.ToLower();
+            Console.Write("alfabet: ");
+            string alfabet = Console.ReadLine();
+            string nystrin = "";
 
-            for (int i = 0; i < n; i++)
+            for (int i = 0; i < alfabet.Length; i++)
             {
-                if (lowText[i] >= 'a' && lowText[i] <= 'z')
+                for (int j = 0; j < pangram.Length; j++)
                 {
-                    shortText += lowText[i];
-                    counter++;
+                    if (alfabet[i] == pangram[j])
+                    {
+                        nystrin += pangram[j];
+                        break;
+                    }
+                    
                 }
             }
 
-            counter = 0;
-            int m = shortText.Length;
-
-            for (int i = 0; i < m; i++)
+            if (nystrin == alfabet)
             {
-                backward += shortText[m - i - 1];
-                counter++;
-            }
-
-            if (backward == shortText)
-            {
-                Console.WriteLine("Yay! Palindrom!");
+                Console.WriteLine("Pangram!");
             }
             else
             {
-                Console.WriteLine("SUKKAH!");
+                Console.WriteLine("No pangram :(");
             }
 
             Console.ReadKey();
