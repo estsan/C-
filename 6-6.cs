@@ -12,9 +12,14 @@ namespace ConsoleApp1
         {
             Console.InputEncoding = Encoding.GetEncoding("ISO-8859-1");
 
+            Console.Write("What do you want censored? ");
             string Text = Console.ReadLine();
             string text = Text.ToLower();
-            List<string> censur = new List<string> {"vader","sled" };
+            Console.Write("Which words do you want to censor? ");
+            string lexikon = Console.ReadLine();
+            lexikon = lexikon.ToLower();
+            string[] censur = lexikon.Split(new Char[] { ' ', ',', '.', ':', '\t' });
+            // List<string> censur = new List<string> {"vader","sled" };
             List<int> upper = new List<int> { };
 
             for (int j=0; j < Text.Length; j++)
