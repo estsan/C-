@@ -47,7 +47,7 @@ namespace ConsoleApp1
                 }
             }
 
-            Console.WriteLine("Det vanligaste ordet är {0}, vilket förekommer {1} gånger.", vanligasteOrdet, m);
+            Console.WriteLine("Det vanligaste ordet är \"{0}\" vilket förekommer {1} gånger.", vanligasteOrdet, m);
             Console.ReadKey();
         }
     }
