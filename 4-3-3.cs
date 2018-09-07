@@ -14,52 +14,40 @@ namespace ConsoleApp1
 
             string text = Console.ReadLine();
             text = text.ToLower();
-            string[] split = text.Split(new Char[] { ' ', ',', '.', ':', '\t'});
-            int n = split.Length;
+            string[] ordlista = text.Split(new Char[] { ' ', ',', '.', ':', '\t' });
+            int n = ordlista.Length;
             Dictionary<string, int> antal = new Dictionary<string, int> { };
-            int counter = 0;
-            Dictionary<string, int> sista = new Dictionary<string, int> { };
 
 
             for (int i = 0; i < n; i++)
             {
-                if (!antal.ContainsKey(split[i]))
+                if (!antal.ContainsKey(ordlista[i]))
                 {
-                    antal[split[i]] = 0;
-                    counter++;
+                    antal[ordlista[i]] = 0;
                 }
             }
 
-            int[] numret = new int[counter];
-            counter = 0;
+            foreach (string ord in ordlista)
+            {
+                if (antal.ContainsKey(ord))
+                {
+                    antal[ord]++;
+                }
+            }            
 
-
+            int m = 0;
+            string vanligasteOrdet = "";
 
             foreach (KeyValuePair<string, int> pair in antal)
             {
-                for (int j = 0; j < n; j++)
+                if ((pair.Value > m) && (pair.Key != ""))
                 {
-                    if (pair.Key == split[j])
-                    {
-                        numret[counter]++;
-                    }
-                }
-                sista.Add(pair.Key, numret[counter]);
-                counter++;
-            }
-            int m = numret.Max();
-            string outputt = "";
-
-            foreach (KeyValuePair<string, int> pair in sista)
-            {
-                if (pair.Value == m)
-                {
-                    outputt = "Det vanligaste ordet är " + pair.Key + ", vilket förekommer " + pair.Value + " gånger.";
-                    //Console.WriteLine("Det vanligaste ordet är \"" + pair.Key + "\", vilket förekommer " + pair.Value + " gånger.");
+                    m = pair.Value;
+                    vanligasteOrdet = pair.Key;
                 }
             }
 
-            Console.WriteLine(outputt);
+            Console.WriteLine("Det vanligaste ordet är {0}, vilket förekommer {1} gånger.", vanligasteOrdet, m);
             Console.ReadKey();
         }
     }
