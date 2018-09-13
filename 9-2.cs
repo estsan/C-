@@ -18,7 +18,7 @@ namespace Session9
             {
                 Name = Name + "-" + p2.Name,
                 Location = Location,
-                Est = 0
+                Est = DateTime.Now.Year
             };
             return NewCompany;
         }
@@ -44,6 +44,8 @@ namespace Session9
                 Est = int.Parse(Console.ReadLine())
             };
             Company bradText = p1.Merge(p2);
+            Console.WriteLine("Det nya företaget heter {0}, har sitt säte i {1} och etablerades {2}.", bradText.Name, bradText.Location, bradText.Est);
+            Console.ReadKey();
         }
     }
 }
