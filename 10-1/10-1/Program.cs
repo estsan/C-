@@ -11,15 +11,22 @@ namespace _10_1
     {
         static void Main(string[] args)
         {
-            string inventoryString = File.ReadAllText("ProductList.txt");
-            string[] inventory = inventoryString.Split(new Char[] { ',' });
-
+            string[] inventoryString = File.ReadAllLines("ProductList.txt");
+            //string inventory = inventoryString.Split(new Char[] { ',' });
+            int m = inventoryString.Length;
             Console.WriteLine("Följande produkter finns i affären:");
+            string[,] inventory = new string[m,4];
             int i = 0;
-            while (i < inventory.Length-1)
+            foreach (string line in inventoryString)
             {
-                Console.WriteLine("{0}: {1} - {2} ({3} kr)",inventory[i], inventory[i+1], inventory[i+2], inventory[i+3]);
-                i += 4;
+                string[] troll = line.Split(new char[] {','});
+
+                for (int j=0; j < 4; j++)
+                {
+                    inventory[i, j] = troll[j].Trim(' ');
+                }
+                Console.WriteLine("{0}: {1} - {2} ({3} kr)",inventory[i,0], inventory[i, 1],inventory[i, 2],inventory[i, 3]);
+                i++;
             }
 
             Console.WriteLine("");
@@ -29,14 +36,14 @@ namespace _10_1
             Dictionary<string, int> slutResultat = new Dictionary<string, int> { };
             while (!exit)
             {
-                int index = 0;
+                //int index = 0;
                 Console.Write("Ange serienummer att köpa: ");
                 string bought = Console.ReadLine();
                 if (bought == "beställ")
                 {
                     Console.WriteLine("");
                     exit = true;
-                    index = inventory.Length-2;
+                    //int index = 10; // inventory.Length-2;
                     Console.WriteLine("Du har lagt följande beställning: ");
                     foreach (KeyValuePair<string, int> pair in slutResultat)
                     {
@@ -52,10 +59,10 @@ namespace _10_1
                 {
                     Console.Write("Ange antal att köpa: ");
                     int antal = int.Parse(Console.ReadLine());
-                    index = Array.IndexOf(inventory, bought);
-                    Console.WriteLine(antal + " exemplar av \"" + inventory[index + 1] + "\" har lagts till i varukorgen");
-                    sum += antal * int.Parse(inventory[index + 3]);
-                    slutResultat[inventory[index + 1]] = antal;
+                    //index = Array.IndexOf(inventory, bought);
+                    //Console.WriteLine(antal + " exemplar av \"" + inventory[index + 1] + "\" har lagts till i varukorgen");
+                    //sum += antal * int.Parse(inventory[index + 3]);
+                    //slutResultat[inventory[index + 1]] = antal;
                     Console.WriteLine();
                 }
             }
