@@ -10,6 +10,20 @@ namespace _10_1
     {
         static void Main(string[] args)
         {
+            Console.Write("Ange serienummer på varan du vill köpa: ");
+            bool exit = false;
+            while (!exit)
+            {
+                string bought = Console.ReadLine();
+                if (bought == "beställ")
+                {
+                    exit = true;
+                }
+                else
+                {
+
+                }
+            }
         }
     }
 }
