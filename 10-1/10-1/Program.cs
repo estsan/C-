@@ -12,20 +12,19 @@ namespace _10_1
         static void Main(string[] args)
         {
             string[] inventoryString = File.ReadAllLines("ProductList.txt");
-            //string inventory = inventoryString.Split(new Char[] { ',' });
             int m = inventoryString.Length;
             Console.WriteLine("Följande produkter finns i affären:");
-            string[,] inventory = new string[m,4];
+            string[,] inventory = new string[m, 4];
             int i = 0;
             foreach (string line in inventoryString)
             {
-                string[] troll = line.Split(new char[] {','});
+                string[] troll = line.Split(new char[] { ',' });
 
-                for (int j=0; j < 4; j++)
+                for (int j = 0; j < 4; j++)
                 {
                     inventory[i, j] = troll[j].Trim(' ');
                 }
-                Console.WriteLine("{0}: {1} - {2} ({3} kr)",inventory[i,0], inventory[i, 1],inventory[i, 2],inventory[i, 3]);
+                Console.WriteLine("{0}: {1} - {2} ({3} kr)", inventory[i, 0], inventory[i, 1], inventory[i, 2], inventory[i, 3]);
                 i++;
             }
 
@@ -43,7 +42,6 @@ namespace _10_1
                 {
                     Console.WriteLine("");
                     exit = true;
-                    //int index = 10; // inventory.Length-2;
                     Console.WriteLine("Du har lagt följande beställning: ");
                     foreach (KeyValuePair<string, int> pair in slutResultat)
                     {
@@ -57,16 +55,42 @@ namespace _10_1
                 }
                 else
                 {
-                    Console.Write("Ange antal att köpa: ");
-                    int antal = int.Parse(Console.ReadLine());
-                    //index = Array.IndexOf(inventory, bought);
-                    //Console.WriteLine(antal + " exemplar av \"" + inventory[index + 1] + "\" har lagts till i varukorgen");
-                    //sum += antal * int.Parse(inventory[index + 3]);
-                    //slutResultat[inventory[index + 1]] = antal;
+                    try
+                    {
+                        string[] index = Index(inventory, bought);
+                        Console.Write("Ange antal att köpa: ");
+                        int antal = int.Parse(Console.ReadLine());
+                        Console.WriteLine(antal + " exemplar av \"" + index[0] + "\" har lagts till i varukorgen");
+                        sum += antal * int.Parse(index[1]);
+                        slutResultat[index[0]] = antal;
+                    }
+                    catch
+                    {
+                        Console.WriteLine("Det är inte ett giltigt serienummer.");
+
+                    }
                     Console.WriteLine();
                 }
             }
             Console.ReadKey();
+        }
+        static string[] Index(string[,] Produktlista, string artikel)
+        {
+            bool loopa = true;
+            int i = 0;
+            string[] name= new string[2];
+            while (loopa)
+            {
+                if (Produktlista[i, 0] == artikel)
+                {
+                    loopa = false;
+                    name[0] = Produktlista[i, 1];
+                    name[1] = Produktlista[i, 3];
+                }
+                i++;
+            }
+            return name;
+
         }
     }
 }
