@@ -13,7 +13,7 @@ namespace ConsoleApp1
         {
 
             string[] contents = File.ReadAllLines("TextFile1.txt");
-
+            string newContents = "";
 
             foreach (string line in contents)
             {
@@ -22,12 +22,14 @@ namespace ConsoleApp1
                     int number = int.Parse(line);
                     int largerNumber = number * 2;
                     Console.WriteLine(largerNumber);
+                    //newContents += largerNumber + "\r\n";         //eller Enviroment.NewLine
                 }
                 catch
                 {
-                    Console.WriteLine("%% not applicable %%");
+                    Console.WriteLine(line);
                 }
             }
+            File.WriteAllText(@"C:\Windows\Temp\NewNumbers.txt", newContents);
 
 
             Console.ReadKey();
