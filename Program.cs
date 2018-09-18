@@ -13,7 +13,7 @@ namespace ConsoleApp1
             Console.InputEncoding = Encoding.GetEncoding("ISO-8859-1");
 
             Console.WriteLine("Hit me up fam, I will disclose the Swedishness of your sentence!");  // Läs in en mening från användaren
-            string text = Console.ReadLine();
+            string text = Console.ReadLine();   //Var försiktig med texterna du skriver ut, snällare.
             int aacount = 0;                  // Ansätt några variabler
             int aecount = 0;
             int oecount = 0;
@@ -27,16 +27,16 @@ namespace ConsoleApp1
 
                 if (c == 'ä' || c == 'Ä')        // Hur många ä:n finns i meningen?
                 {
-                    aacount++;
+                    aacount++;                  //fel variabelnamn
                 }
 
                 if (c == 'ö' || c == 'Ö')        // Hur många ö:n finns i meningen?
                 {
-                    aacount++;
+                    aacount++;                  //fel variabelnamn
                 }
             }
 
-            bool aabool = aacount == 0;
+            bool aabool = aacount == 0;                 //istället för dessa tre, skriv "if (sum == 0)" för samma resultat
             bool aebool = aecount == 0;
             bool oebool = oecount == 0;
             int sum = aacount + aecount + oecount;     // Är antalet å, ä och ö noll?
