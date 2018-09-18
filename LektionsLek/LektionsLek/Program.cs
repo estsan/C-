@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -10,21 +11,25 @@ namespace ConsoleApp1
     {
         static void Main(string[] args)
         {
-            Console.Write("Please enter a number: ");
-            try
+
+            string[] contents = File.ReadAllLines("TextFile1.txt");
+
+
+            foreach (string line in contents)
             {
-                int number = int.Parse(Console.ReadLine());
-                int result = 10 / number;
-                Console.WriteLine("10 divided by your number is: " + result);
+                try
+                {
+                    int number = int.Parse(line);
+                    int largerNumber = number * 2;
+                    Console.WriteLine(largerNumber);
+                }
+                catch
+                {
+                    Console.WriteLine("%% not applicable %%");
+                }
             }
-            catch(FormatException)
-            {
-                Console.WriteLine("You did not enter a number.");
-            }
-            catch(DivideByZeroException)
-            {
-                Console.WriteLine("Division by 0 is not allowed!");
-            }
+
+
             Console.ReadKey();
         }
     }
