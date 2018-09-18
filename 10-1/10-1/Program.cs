@@ -11,21 +11,38 @@ namespace _10_1
     {
         static void Main(string[] args)
         {
-            string[] inventoryString = File.ReadAllLines("ProductList.txt");
+            string[] inventoryString = new string[0];
+            bool apa = false;
+            try
+            {
+                inventoryString = File.ReadAllLines("ProductList.txt");
+                Console.WriteLine("Följande produkter finns i affären:");
+            }
+            catch
+            {
+                Console.WriteLine("Det här är inte en affär.");
+                apa = true;
+            }
             int m = inventoryString.Length;
-            Console.WriteLine("Följande produkter finns i affären:");
             string[,] inventory = new string[m, 4];
             int i = 0;
             foreach (string line in inventoryString)
             {
                 string[] troll = line.Split(new char[] { ',' });
 
-                for (int j = 0; j < 4; j++)
+                try
                 {
-                    inventory[i, j] = troll[j].Trim(' ');
+                    for (int j = 0; j < 4; j++)
+                    {
+                        inventory[i, j] = troll[j].Trim(' ');
+                    }
+                    Console.WriteLine("{0}: {1} - {2} ({3} kr)", inventory[i, 0], inventory[i, 1], inventory[i, 2], inventory[i, 3]);
+                    i++;
                 }
-                Console.WriteLine("{0}: {1} - {2} ({3} kr)", inventory[i, 0], inventory[i, 1], inventory[i, 2], inventory[i, 3]);
-                i++;
+                catch
+                {
+                    //Inget händer i så fall
+                }
             }
 
             Console.WriteLine("");
@@ -35,9 +52,15 @@ namespace _10_1
             Dictionary<string, int> slutResultat = new Dictionary<string, int> { };
             while (!exit)
             {
-                //int index = 0;
+                if (i == 0 && !apa)
+                {
+                    Console.WriteLine("Vi har slut på allt tyvärr, kom tillbaka en annan gång.");
+                    break;
+                }
                 Console.Write("Ange serienummer att köpa: ");
                 string bought = Console.ReadLine();
+                string[] index = new string[2];
+
                 if (bought == "beställ")
                 {
                     Console.WriteLine("");
@@ -53,16 +76,33 @@ namespace _10_1
                     Console.WriteLine("Välkommen åter!");
 
                 }
+                else if (bought == "spara")
+                {
+                    string text = "";
+                    foreach (KeyValuePair<string, int> pair in slutResultat)
+                    {
+                        text += pair.Value + " st " + pair.Key + Environment.NewLine;
+                    }                    
+                    File.WriteAllText(@"C:\Windows\Temp\NyFil.txt", text, Encoding.UTF8);
+                    exit = true;
+                }
                 else
                 {
                     try
                     {
-                        string[] index = Index(inventory, bought);
+                        index = Index(inventory, bought);
                         Console.Write("Ange antal att köpa: ");
                         int antal = int.Parse(Console.ReadLine());
                         Console.WriteLine(antal + " exemplar av \"" + index[0] + "\" har lagts till i varukorgen");
                         sum += antal * int.Parse(index[1]);
-                        slutResultat[index[0]] = antal;
+                        if (slutResultat.ContainsKey(index[0]))
+                        {
+                            slutResultat[index[0]] += antal;
+                        }
+                        else
+                        {
+                            slutResultat[index[0]] = antal;
+                        }
                     }
                     catch
                     {
