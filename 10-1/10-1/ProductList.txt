@@ -1,1 +1,3 @@
-﻿
+﻿AAA111, apelsin, fyllt med c-vitamin, 13
+BBB222, banan, glöm inte bananfodral!, 7
+CCC333, bananfodral, kvalitetsfodral i hådplast, 20

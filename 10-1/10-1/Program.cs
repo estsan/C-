@@ -7,6 +7,18 @@ using System.Threading.Tasks;
 
 namespace _10_1
 {
+    class Product
+    {
+        public string Serial;
+        public string Name;
+        public string Description;
+        public int Prize;
+
+        public Product PaySalary()
+        {
+            return this;
+        }
+    }
     class Program
     {
         static void Main(string[] args)
