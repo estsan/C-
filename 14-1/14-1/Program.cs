@@ -8,36 +8,115 @@ namespace _14_1
 { 
     class Flags
     {
-        public int country;
-
-        public void Flag()
+        public static void DrawFlag(int country)
         {
             if (country == 1)
             {
                 Console.BackgroundColor = ConsoleColor.Blue;
-                Console.Write("    ");
+                Console.Write("                ");
                 Console.BackgroundColor = ConsoleColor.White;
-                Console.Write("    ");
+                Console.Write("                ");
                 Console.BackgroundColor = ConsoleColor.Red;
-                Console.Write("    ");
+                Console.Write("                ");
 
                 Console.WriteLine();
 
                 Console.BackgroundColor = ConsoleColor.Blue;
-                Console.Write("    ");
+                Console.Write("                ");
                 Console.BackgroundColor = ConsoleColor.White;
-                Console.Write("    ");
+                Console.Write("                ");
                 Console.BackgroundColor = ConsoleColor.Red;
-                Console.Write("    ");
+                Console.Write("                ");
 
                 Console.WriteLine();
 
                 Console.BackgroundColor = ConsoleColor.Blue;
-                Console.Write("    ");
+                Console.Write("                ");
                 Console.BackgroundColor = ConsoleColor.White;
-                Console.Write("    ");
+                Console.Write("                ");
                 Console.BackgroundColor = ConsoleColor.Red;
-                Console.Write("    ");
+                Console.Write("                ");
+
+                Console.WriteLine();
+
+                Console.BackgroundColor = ConsoleColor.Blue;
+                Console.Write("                ");
+                Console.BackgroundColor = ConsoleColor.White;
+                Console.Write("                ");
+                Console.BackgroundColor = ConsoleColor.Red;
+                Console.Write("                ");
+
+                Console.WriteLine();
+
+                Console.BackgroundColor = ConsoleColor.Blue;
+                Console.Write("                ");
+                Console.BackgroundColor = ConsoleColor.White;
+                Console.Write("                ");
+                Console.BackgroundColor = ConsoleColor.Red;
+                Console.Write("                ");
+
+                Console.WriteLine();
+
+                Console.BackgroundColor = ConsoleColor.Blue;
+                Console.Write("                ");
+                Console.BackgroundColor = ConsoleColor.White;
+                Console.Write("                ");
+                Console.BackgroundColor = ConsoleColor.Red;
+                Console.Write("                ");
+
+                Console.WriteLine();
+
+                Console.BackgroundColor = ConsoleColor.Blue;
+                Console.Write("                ");
+                Console.BackgroundColor = ConsoleColor.White;
+                Console.Write("                ");
+                Console.BackgroundColor = ConsoleColor.Red;
+                Console.Write("                ");
+
+                Console.WriteLine();
+
+                Console.BackgroundColor = ConsoleColor.Blue;
+                Console.Write("                ");
+                Console.BackgroundColor = ConsoleColor.White;
+                Console.Write("                ");
+                Console.BackgroundColor = ConsoleColor.Red;
+                Console.Write("                ");
+
+                Console.WriteLine();
+
+                Console.BackgroundColor = ConsoleColor.Blue;
+                Console.Write("                ");
+                Console.BackgroundColor = ConsoleColor.White;
+                Console.Write("                ");
+                Console.BackgroundColor = ConsoleColor.Red;
+                Console.Write("                ");
+
+                Console.WriteLine();
+
+                Console.BackgroundColor = ConsoleColor.Blue;
+                Console.Write("                ");
+                Console.BackgroundColor = ConsoleColor.White;
+                Console.Write("                ");
+                Console.BackgroundColor = ConsoleColor.Red;
+                Console.Write("                ");
+
+                Console.WriteLine();
+
+                Console.BackgroundColor = ConsoleColor.Blue;
+                Console.Write("                ");
+                Console.BackgroundColor = ConsoleColor.White;
+                Console.Write("                ");
+                Console.BackgroundColor = ConsoleColor.Red;
+                Console.Write("                ");
+
+                Console.WriteLine();
+
+                Console.BackgroundColor = ConsoleColor.Blue;
+                Console.Write("                ");
+                Console.BackgroundColor = ConsoleColor.White;
+                Console.Write("                ");
+                Console.BackgroundColor = ConsoleColor.Red;
+                Console.Write("                ");
 
                 Console.WriteLine();
             }
@@ -513,14 +592,21 @@ namespace _14_1
             Console.WriteLine("8. Greece");
             Console.WriteLine("9. USA");
 
-            Flags land = new Flags
+            bool continu = true;
+            while (continu)
             {
-                country =int.Parse(Console.ReadLine())
-            };
-            land.Flag();
-
-
-            Console.ReadKey();
+                Console.BackgroundColor = ConsoleColor.Black;
+                int country = int.Parse(Console.ReadLine());
+                if (country == 0)
+                {
+                    continu = false;
+                }
+                try
+                {
+                    Flags.DrawFlag(country);
+                }
+                catch { }
+            }
         }
     }
 }
