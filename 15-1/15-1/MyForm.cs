@@ -12,16 +12,9 @@ namespace _15_1
     {
         public MyForm()
         {
-            Button button = new Button
-            {
-                Text = "Can I be President?",
-                Dock = DockStyle.Top
-            };
-            Controls.Add(button);
-
             TableLayoutPanel panel = new TableLayoutPanel
             {
-                RowCount = 4,
+                RowCount = 5,
                 ColumnCount = 2,
                 Dock=DockStyle.Top,
             };
@@ -30,7 +23,7 @@ namespace _15_1
             Label label1 = new Label
             {
                 Text = "Country",
-                Dock = DockStyle.Bottom
+                TextAlign = ContentAlignment.MiddleRight
             };
             panel.Controls.Add(label1);
 
@@ -43,7 +36,7 @@ namespace _15_1
             Label label2 = new Label
             {
                 Text = "Age",
-                Dock = DockStyle.Bottom
+                TextAlign = ContentAlignment.MiddleRight
             };
             panel.Controls.Add(label2);
 
@@ -56,7 +49,7 @@ namespace _15_1
             Label label3 = new Label
             {
                 Text = "Times elected",
-                Dock = DockStyle.Bottom
+                TextAlign = ContentAlignment.MiddleRight
             };
             panel.Controls.Add(label3);
 
@@ -69,15 +62,34 @@ namespace _15_1
             Label label4 = new Label
             {
                 Text = "I am a woman",
-                Dock = DockStyle.Bottom
+                TextAlign = ContentAlignment.MiddleRight
             };
             panel.Controls.Add(label4);
 
             CheckBox checkBox = new CheckBox
             {
-
+                Dock = DockStyle.Fill
             };
             panel.Controls.Add(checkBox);
+
+            Button button = new Button
+            {
+                Text = "Can I be President?",
+                Dock = DockStyle.Fill
+            };
+            Controls.Add(button);
+
+            bool nationality = text.Text == "USA";
+            bool ageBool = age.Value >= 35;
+            bool mandates = mandate.Value < 2;
+            bool womans = checkBox.Checked;
+
+            button.Click += ClickedEventHandler;
+        }
+
+        private void ClickedEventHandler(object sender, EventArgs e)
+        {
+            { MessageBox.Show("You clicked the button"); }
         }
     }
 }
