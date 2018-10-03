@@ -4,10 +4,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{2B856711-D459-4672-8E50-D268717C864C}</ProjectGuid>
+    <ProjectGuid>{FF8CE1C2-FD80-4084-8616-8D5059B2BA84}</ProjectGuid>
     <OutputType>Exe</OutputType>
-    <RootNamespace>Inlämningsuppgift2</RootNamespace>
-    <AssemblyName>Inlämningsuppgift2</AssemblyName>
+    <RootNamespace>Bank</RootNamespace>
+    <AssemblyName>Bank</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
