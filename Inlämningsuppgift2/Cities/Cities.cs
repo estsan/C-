@@ -62,48 +62,16 @@ namespace ImperativeToFunctional
                     Founded = 1200
                 }
             };
-
-            int highestPopulation = cities[0].Population;
-            foreach (City city in cities)
-            {
-                if (city.Population > highestPopulation)
-                {
-                    highestPopulation = city.Population;
-                }
-            }
+            int highestPopulation = cities.Max(city => city.Population);
             Console.WriteLine("Highest population: " + highestPopulation);
-
-            int earliestFounding = cities[0].Founded;
-            foreach (City city in cities)
-            {
-                if (city.Founded < earliestFounding)
-                {
-                    earliestFounding = city.Founded;
-                }
-            }
+            
+            int earliestFounding = cities.Min(city => city.Founded);
             Console.WriteLine("Earliest founding: " + earliestFounding);
 
-            double totalPopulationDensity = 0;
-            foreach (City city in cities)
-            {
-                totalPopulationDensity += city.Population / city.Area;
-            }
-            double averagePopulationDensity = Math.Round(totalPopulationDensity / cities.Length);
+            double averagePopulationDensity = Math.Round(cities.Select(city => (double)city.Population / city.Area).ToArray().Sum() / cities.Length);
             Console.WriteLine("Average population density: " + averagePopulationDensity + " people per square kilometer");
 
-            List<City> longNameCities = new List<City>();
-            foreach (City city in cities)
-            {
-                if (city.Name.Length > 6)
-                {
-                    longNameCities.Add(city);
-                }
-            }
-            List<string> longNames = new List<string>();
-            foreach (City city in longNameCities)
-            {
-                longNames.Add(city.Name);
-            }
+            List<string> longNames = cities.Where(city => city.Name.Length > 6).ToList().Select(city => city.Name).ToList();
             Console.WriteLine("Cities with names longer than six letters: " + String.Join(", ", longNames));
         }
     }
