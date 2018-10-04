@@ -27,7 +27,7 @@ namespace LektionsPloj
 
             Button button1 = new Button
             {
-                Text = "Try to insult me",
+                Text = "Insult me",
             };
             table.Controls.Add(button1);
 
