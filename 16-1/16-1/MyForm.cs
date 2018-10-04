@@ -75,7 +75,7 @@ namespace _16_1
 
             age = new NumericUpDown
             {
-                Dock = DockStyle.Fill
+                Dock = DockStyle.Fill,
             };
             panel.Controls.Add(age);
 
