@@ -10,90 +10,121 @@ namespace _16_3_ToDoList
 {
     class MyForm : Form
     {
-        TableLayoutPanel panel;
-        CheckBox checkBox;
-        Label label2;
+        TableLayoutPanel outerPanel;
+        TableLayoutPanel bottomPanel;
+        TableLayoutPanel innerPanel;
+        CheckBox done;
+        Label toDo;
+        TextBox itemToAdd;
+        Button addItem;
+        Button remove;
 
         public MyForm()
         {
-            #region Outer panel
-            panel = new TableLayoutPanel
+            #region Panels
+            outerPanel = new TableLayoutPanel
             {
                 RowCount = 3,
                 ColumnCount = 1,
                 Dock = DockStyle.Fill
             };
-            Controls.Add(panel);
-            panel.ColumnStyles.Add(new ColumnStyle(SizeType.AutoSize, 100));
-            panel.RowStyles.Add(new RowStyle(SizeType.Absolute, 20));
-            panel.RowStyles.Add(new RowStyle(SizeType.Absolute, 35));
-            panel.RowStyles.Add(new RowStyle(SizeType.AutoSize, 80));
-            #endregion
+            outerPanel.ColumnStyles.Add(new ColumnStyle(SizeType.AutoSize, 100));
+            outerPanel.RowStyles.Add(new RowStyle(SizeType.Absolute, 20));
+            outerPanel.RowStyles.Add(new RowStyle(SizeType.Absolute, 35));
 
-            TableLayoutPanel topPanel = new TableLayoutPanel
+            TableLayoutPanel middlePanel = new TableLayoutPanel
             {
                 ColumnCount = 2,
                 RowCount = 1,
                 Dock = DockStyle.Fill
             };
-            topPanel.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 5));
-            topPanel.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 2));
-            topPanel.RowStyles.Add(new RowStyle(SizeType.AutoSize, 80));
+            middlePanel.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 5));
+            middlePanel.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 2));
 
+            bottomPanel = new TableLayoutPanel
+            {
+                Dock = DockStyle.Fill,
+                BackColor = Color.Pink
+            };
+            middlePanel.RowStyles.Add(new RowStyle(SizeType.Percent, 2));
+
+
+            #endregion
 
             #region Labels
-            TextBox t1 = new TextBox
+            itemToAdd = new TextBox
             {
                 BackColor = Color.LightGreen,
                 Dock = DockStyle.Fill
             };
-            Button b1 = new Button
+
+            addItem = new Button
             {
-                Text = "Add item.",
+                Text = "Add item",
                 BackColor = Color.Blue,
                 Dock = DockStyle.Fill,
             };
-            Label l1 = new Label
+            Label toDoList = new Label
             {
                 Text = "TO-DO LIST!",
                 BackColor = Color.LightCyan,
                 Dock = DockStyle.Fill,
             };
-            Label l4 = new Label
-            {
-                BackColor = Color.Red,
-                Dock = DockStyle.Fill,
-                Margin = new Padding(0, 0, 0, 0)
-            };
             #endregion
-            panel.Controls.Add(l1);
-            panel.Controls.Add(topPanel);
-            topPanel.Controls.Add(t1);
-            topPanel.Controls.Add(b1);
+            Controls.Add(outerPanel);
+            outerPanel.Controls.Add(toDoList);
+            outerPanel.Controls.Add(middlePanel);
+            outerPanel.Controls.Add(bottomPanel);
+            middlePanel.Controls.Add(itemToAdd);
+            middlePanel.Controls.Add(addItem);
 
-            TableLayoutPanel bottomPanel = new TableLayoutPanel
+            addItem.Click += AddItem;
+            AcceptButton = addItem;
+
+            }
+        private void RemoveItem(object sender, EventArgs e)
+        {
+            Button remove = (Button)sender;
+            bottomPanel.Controls.Remove((TableLayoutPanel) remove.Tag);
+        }
+
+        private void AddItem(object sender, EventArgs e)
+        {
+            innerPanel = new TableLayoutPanel
             {
-                ColumnCount = 2,
-                Dock = DockStyle.Fill
+                ColumnCount = 3,
+                RowCount = 1,
+                Dock = DockStyle.Top,
+                BackColor = Color.HotPink
             };
-            panel.Controls.Add(bottomPanel);
-            bottomPanel.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 1));
-            bottomPanel.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 5));
+            innerPanel.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 1));
+            innerPanel.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 5));
+            innerPanel.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 2));
 
-            checkBox = new CheckBox
+            done = new CheckBox
             {
                 BackColor = Color.Yellow
             };
-            bottomPanel.Controls.Add(checkBox);
+            innerPanel.Controls.Add(done);
 
-            label2 = new Label
+            toDo = new Label
             {
-                BackColor = Color.Pink
-
+                Text = itemToAdd.Text
             };
-            bottomPanel.Controls.Add(label2);
+            innerPanel.Controls.Add(toDo);
 
+            remove = new Button
+            {
+                BackColor = Color.Red,
+                Text = "Remove"
+            };
+            innerPanel.Controls.Add(remove);
+
+            bottomPanel.RowStyles.Add(new RowStyle(SizeType.Absolute, 35));
+            bottomPanel.Controls.Add(innerPanel);
+
+            remove.Tag = innerPanel;
+            remove.Click += RemoveItem;
         }
-
     }
 }
