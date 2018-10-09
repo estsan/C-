@@ -11,9 +11,13 @@ namespace _17_1
 {
     class MyForm : Form
     {
-        string otherString = "String from CSV";
-        ComboBox comboBox;
         TableLayoutPanel panel;
+        ComboBox comboBox;
+        Label info;
+        string otherString = "";
+        string[] ringmastersMembers;
+        string[,] ringmastersMemberParts;
+        int m;
 
         public MyForm()
         {
@@ -35,37 +39,50 @@ namespace _17_1
 
             };
 
-            string[] inventoryString = File.ReadAllLines("TextFile1.txt");
+            ringmastersMembers = File.ReadAllLines("People.txt");
+            m = ringmastersMembers.Length;
+            ringmastersMemberParts = new string[m, 2];
 
-            comboBox.Items.Add("Emanuel");
+            int i = 0;
+            foreach (string line in ringmastersMembers)
+            {
+                string[] temp = line.Split(new char[] { ',' });
 
-            comboBox.Items.Add("Martin");
-            comboBox.Items.Add("Rasmus");
-            comboBox.Items.Add("Jakob");
+                    for (int j = 0; j < 2; j++)
+                    {
+                        ringmastersMemberParts[i, j] = temp[j].Trim(' ');
+                    }
+                i++;
+            }
+            for (int k = 0; k < m; k++)
+            {
+                comboBox.Items.Add(ringmastersMemberParts[k,0]);
+            }
+
 
             panel.Controls.Add(comboBox);
+            comboBox.DropDownClosed += Info;
 
-            Button spy = new Button
-            {
-                Text = "Spy anyways"
-            };
-            panel.Controls.Add(spy);
+            //Button spy = new Button
+            //{
+            //    Text = "Spy anyways"
+            //};
+            //panel.Controls.Add(spy);
 
-            spy.Click += Info;
+            //spy.Click += Info;
+            
 
 
         }
         private void Info(object sender, EventArgs e)
         {
-            if (true)
-            {
-                otherString = "Text om Emanuel";
-            }
-            else
-            {
-                otherString = "Är du verkligen intresserad av den typen...?";
-            }
-            Label info = new Label
+            int w = comboBox.SelectedIndex;
+
+            otherString = ringmastersMemberParts[w, 1];
+
+            panel.Controls.Remove(info);
+
+            info = new Label
             {
                 Text = otherString
             };
