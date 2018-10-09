@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -17,7 +17,7 @@ namespace ConsoleApp1
             if (age < 18)
             {
                 Console.WriteLine("Okej, då får du stanna utanför tyvärr.");
-            }  
+            }
 
             else
             {

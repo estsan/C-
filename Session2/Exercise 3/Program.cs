@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -17,7 +17,7 @@ namespace ConsoleApp1
             if ((temperature <= 26) && (temperature >= 18))
             {
                 Console.WriteLine("Neat, här var det lagom varmt");
-            }  
+            }
 
             else if (temperature < 18)
             {

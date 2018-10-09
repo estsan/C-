@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -17,7 +17,7 @@ namespace ConsoleApp1
             if (password == "secret123")
             {
                 Console.WriteLine("Du hade rätt, men jag är skeptisk. Gissade du?");
-            }  
+            }
 
             else
             {
