@@ -58,7 +58,7 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="People.txt" />
+    <Content Include="bin\Debug\People.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
