@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Drawing;
 
-namespace _17_1
+namespace Exercise_2
 {
     class Program
     {

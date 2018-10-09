@@ -33,7 +33,7 @@ namespace _17_1
 
         public MyForm()
         {
-            Font = new Font ( "Arial", 10);
+            Font = new Font("Arial", 10);
 
             #region Table
             panel = new TableLayoutPanel
