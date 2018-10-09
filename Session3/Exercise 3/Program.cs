@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -17,7 +17,7 @@ namespace ConsoleApp1
             int sj = 0;
             int su = 0;
 
-            for (int i = 2; i < n+1; i += 2)
+            for (int i = 2; i < n + 1; i += 2)
             {
                 sj = sj + i;
             }

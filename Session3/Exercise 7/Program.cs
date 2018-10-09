@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -21,7 +21,7 @@ namespace ConsoleApp1
 
             for (int i = 0; i < rutor; i++)
             {
-                korn = korn + Math.Pow(2,i);
+                korn = korn + Math.Pow(2, i);
             }
 
             Console.WriteLine(korn);

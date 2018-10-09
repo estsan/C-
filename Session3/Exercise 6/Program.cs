@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -12,15 +12,17 @@ namespace ConsoleApp1
         {
             System.Globalization.CultureInfo.CurrentCulture = System.Globalization.CultureInfo.InvariantCulture;
 
-            Console.Write("Input integer: ");
-            int m = int.Parse(Console.ReadLine());
-            Console.Write("Input higher integer: ");
-            int n = int.Parse(Console.ReadLine());
+            double vetekorn = 0;
 
-            for (int i = m; i <= n; i++)
-                Console.Write(i + " ");
+            // Antal rutor
+            int max = 4;
 
-            Console.ReadKey();
+            for (int i = 0; i < max; i++)
+            {
+                vetekorn = vetekorn + Math.Pow(2, i);
+            }
+            Console.WriteLine(vetekorn);
+            Console.ReadLine();
 
         }
     }

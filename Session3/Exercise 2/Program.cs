@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -12,16 +12,15 @@ namespace ConsoleApp1
         {
             System.Globalization.CultureInfo.CurrentCulture = System.Globalization.CultureInfo.InvariantCulture;
 
-            double vetekorn = 0;
+            Console.Write("Fakuliteten av vaddå: ");
+            int n = int.Parse(Console.ReadLine());
+            int p = 1;
 
-            // Antal rutor
-            int max = 4;
-
-            for (int i = 0; i < max; i++)
+            for (int i = 1; i < n + 1; i++)
             {
-                vetekorn = vetekorn + Math.Pow(2,i);
+                p = p * i;
             }
-            Console.WriteLine(vetekorn);
+            Console.WriteLine("Fakuliteten av " + n + " är " + p);
             Console.ReadLine();
 
         }
