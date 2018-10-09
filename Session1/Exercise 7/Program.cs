@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -12,7 +12,7 @@ namespace ConsoleApp1
         {
             Console.WriteLine("Har du en tid i sekunder och vill uttrycka den i timmar, minuter och sekunder istället? Ge mig antalet!");
             int s = int.Parse(Console.ReadLine());
-           
+
 
             int h = s / 3600;
             int mr = s % 3600;
@@ -23,7 +23,7 @@ namespace ConsoleApp1
             Console.WriteLine("Var det rätt? Noice! Klicka enter nu och fortsätt knacka kod");
             Console.ReadLine();
 
-         
+
         }
     }
 }
