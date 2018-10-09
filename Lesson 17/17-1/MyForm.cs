@@ -11,34 +11,51 @@ namespace _17_1
 {
     class MyForm : Form
     {
+        #region Instance Variables
         TableLayoutPanel panel;
-        ComboBox comboBox;
+        ComboBox dropDownMenu;
         Label info;
-        string otherString = "";
+        string infoString;
+        string part;
+        string member;
         string[] ringmastersMembers;
         string[,] ringmastersMemberParts;
         int m;
+        #endregion
 
         public MyForm()
         {
+            Font = new Font ( "Arial", 10);
+
+            #region Table
             panel = new TableLayoutPanel
             {
-                RowCount = 4,
+                RowCount = 3,
                 Dock = DockStyle.Fill
             };
             Controls.Add(panel);
+            #endregion
 
+            #region Things
             Label rubrik = new Label
             {
-                Text = "Hey! Don't spy!"
+                Text = "Hey! Don't spy!",
+                Dock = DockStyle.Fill
             };
-            panel.Controls.Add(rubrik);
 
-            comboBox = new ComboBox
+            dropDownMenu = new ComboBox
             {
 
             };
 
+            //Button spy = new Button
+            //{
+            //    Text = "Spy anyways"
+            //};
+            #endregion
+
+            #region DropDownMenu
+            panel.Controls.Add(rubrik);
             ringmastersMembers = File.ReadAllLines("People.txt");
             m = ringmastersMembers.Length;
             ringmastersMemberParts = new string[m, 2];
@@ -56,36 +73,33 @@ namespace _17_1
             }
             for (int k = 0; k < m; k++)
             {
-                comboBox.Items.Add(ringmastersMemberParts[k,0]);
+                dropDownMenu.Items.Add(ringmastersMemberParts[k,0]);
             }
+            #endregion
 
-
-            panel.Controls.Add(comboBox);
-            comboBox.DropDownClosed += Info;
-
-            //Button spy = new Button
-            //{
-            //    Text = "Spy anyways"
-            //};
+            #region Adding to panel
+            panel.Controls.Add(dropDownMenu);
+            dropDownMenu.DropDownClosed += MenuClosed;
             //panel.Controls.Add(spy);
-
             //spy.Click += Info;
-            
-
-
+            #endregion
         }
-        private void Info(object sender, EventArgs e)
+        private void MenuClosed(object sender, EventArgs e)
         {
-            int w = comboBox.SelectedIndex;
+            int w = dropDownMenu.SelectedIndex;
 
-            otherString = ringmastersMemberParts[w, 1];
+            member = ringmastersMemberParts[w, 0];
+            part = ringmastersMemberParts[w, 1];
+            infoString = member + " sings " + part + " in Ringmasters.";
 
             panel.Controls.Remove(info);
 
             info = new Label
             {
-                Text = otherString
+                Text = infoString,
+                Dock = DockStyle.Fill
             };
+            info.TextAlign = ContentAlignment.MiddleCenter;
             panel.Controls.Add(info);
         }
     }
