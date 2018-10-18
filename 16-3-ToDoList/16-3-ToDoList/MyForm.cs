@@ -95,7 +95,7 @@ namespace _16_3_ToDoList
                 ColumnCount = 3,
                 RowCount = 1,
                 Dock = DockStyle.Top,
-                BackColor = Color.HotPink
+                BackColor = Color.Pink
             };
             innerPanel.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 1));
             innerPanel.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 5));
