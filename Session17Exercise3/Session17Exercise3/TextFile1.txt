@@ -1,0 +1,3 @@
+﻿1, pengling, fågel
+2, enhörning, väsen
+3, räv, hund
