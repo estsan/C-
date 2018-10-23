@@ -66,3 +66,7 @@ namespace Session19Exercise2
         }
     }
 }
+
+
+// När programmet ska skapa en extern fil ska den ligga i C:\Windows\Temp\FilNamn.txt.
+// Även andra filer kan ligga där, men ej nödvändigt.
